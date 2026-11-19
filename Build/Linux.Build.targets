@@ -1,0 +1,30 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <FrameworkPathOverride>$(MSBuildThisFileDirectory)../packages/Microsoft.NETFramework.ReferenceAssemblies.net472.1.0.3/build/.NETFramework/v4.7.2</FrameworkPathOverride>
+    <GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
+    <GenerateResourceMSBuildArchitecture>CurrentArchitecture</GenerateResourceMSBuildArchitecture>
+    <GenerateResourceMSBuildRuntime>CurrentRuntime</GenerateResourceMSBuildRuntime>
+  </PropertyGroup>
+  <ItemGroup>
+    <COMReference Remove="@(COMReference)" />
+    <Reference Include="Interop.IWshRuntimeLibrary">
+      <HintPath>../packages/Interop.IWshRuntimeLibrary.1.0.1/lib/net45/Interop.IWshRuntimeLibrary.dll</HintPath>
+      <EmbedInteropTypes>true</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.Resources.Extensions">
+      <HintPath>../packages/System.Resources.Extensions.4.7.1/lib/net461/System.Resources.Extensions.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <!-- The legacy task depends on MSBuild 4; copy the sole native package directly. -->
+  <Target Name="CollectNugetOutputFiles">
+    <ItemGroup>
+      <NugetOutputFiles Include="$(MSBuildThisFileDirectory)../packages/libsodium-net.0.10.0/output/**/*.*" />
+    </ItemGroup>
+  </Target>
+  <Target Name="BuildParallelLauncher" AfterTargets="Build">
+    <Csc Sources="$(MSBuildProjectDirectory)/../Launcher.cs"
+         OutputAssembly="$(TargetDir)RBX Alt Manager.exe"
+         TargetType="exe" NoStandardLib="true"
+         References="$(FrameworkPathOverride)/mscorlib.dll;$(FrameworkPathOverride)/System.dll" />
+  </Target>
+</Project>
