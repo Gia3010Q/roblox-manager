@@ -1,6 +1,6 @@
 # Roblox Manager — Parallel
 
-Bản Windows để tải về và test. Vào **Releases**, tải `Roblox-Manager-Windows.zip`, giải nén toàn bộ vào thư mục riêng, rồi mở `Roblox Manager.exe`.
+[Tải bản Windows để test](https://github.com/Gia3010Q/roblox-manager/releases/latest). Vào **Releases**, tải `Roblox-Manager-Windows.zip`, giải nén toàn bộ vào thư mục riêng, rồi mở `Roblox Manager.exe`.
 
 Yêu cầu: Windows, .NET Framework 4.7.2 trở lên. Nếu thiếu Visual C++ Runtime, cài Microsoft Visual C++ Redistributable 2015–2022 (x86; thêm x64 nếu chạy tiến trình 64 bit).
 
